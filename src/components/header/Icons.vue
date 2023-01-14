@@ -1,5 +1,5 @@
 <script setup>
-import Icon from "./Icon.vue"
+import Icon from "../Icon.vue"
 const itemsIcons = [
     { href: "https://www.facebook.com", classIcon: "fa fa-facebook" },
     { href: "https://www.twitter.com", classIcon: "fa fa-twitter" },

@@ -1,9 +1,12 @@
-<script setup></script>
+<script setup>
+import ImagenLightbox from "../components/ImagenLightbox.vue";
+</script>
 <template>
     <section class="principal">
         <section class="portada">
             <div class="columna">
-                <div class="foto izquierda lightbox">
+                <div class="foto">
+                    <ImagenLightbox url="https://i.postimg.cc/Gh1Lz8Mn/portada1.jpg" backgroundPosition="left" />
                 </div>
                 <div class="texto">
                     <h2>Mejor Calidad</h2>
@@ -14,13 +17,16 @@
                         expedita delectus molestiac voluptate, animi unde quia ex.
                     </p>
                 </div>
-                <div class="foto_full izquierda lightbox">
+                <div class="foto_full izquierda">
+                    <ImagenLightbox url="https://i.postimg.cc/m2NbnLqz/portada2.jpg" backgroundPosition="left" />
                 </div>
             </div>
             <div class="columna">
-                <div class="foto_full derecha lightbox">
+                <div class="foto_full">
+                    <ImagenLightbox url="https://i.postimg.cc/W3kVwTg4/portada4.jpg" backgroundPosition="center" />
                 </div>
-                <div class="foto derecha lightbox">
+                <div class="foto">
+                    <ImagenLightbox url="https://i.postimg.cc/HWMWQ49t/portada3.jpg" backgroundPosition="center" />
                 </div>
                 <div class="texto">
                     <h2>Mejor Sabor</h2>
@@ -37,8 +43,6 @@
 </template>
 <style scoped lang="scss">
 .principal {
-    height: 80rem;
-
     .portada {
         display: flex;
         flex-wrap: wrap;
@@ -52,19 +56,7 @@
             flex-wrap: wrap;
 
             .foto {
-                background-size: cover;
-                background-position: center;
                 width: 50%;
-            }
-
-            .izquierda {
-                background-image: url('https://i.postimg.cc/Gh1Lz8Mn/portada1.jpg');
-                background-position: left;
-            }
-
-            .derecha {
-                background-image: url('https://i.postimg.cc/m2NbnLqz/portada2.jpg');
-                opacity: 0.8
             }
 
             .texto {
@@ -82,62 +74,52 @@
                     font-size: 0.9375rem;
                     line-height: 1.75rem;
                 }
+
+                @media all and (max-width: 800px) {
+                    h2 {
+                        text-align: center;
+                    }
+
+                    p {
+                        text-align: justify;
+                    }
+                }
             }
 
             .foto_full {
                 width: 100%;
                 min-height: 15.25rem;
-                background-size: cover;
-                background-position: center;
             }
 
-            .foto_full.izquierda {
-                background-image: url('https://i.postimg.cc/HWMWQ49t/portada3.jpg');
-                opacity: 0.8;
+            @media all and (max-width: 1500px) {
+                .texto {
+                    padding-left: 2.25rem;
+                    padding-right: 2.25rem;
+                }
             }
 
-            .foto_full.derecha {
-                background-image: url('https://i.postimg.cc/W3kVwTg4/portada4.jpg');
-                opacity: 0.8;
+            @media all and (max-width: 1199px) {
+                .foto {
+                    display: none;
+                }
+
+                .texto {
+                    width: 100%;
+                }
+            }
+
+            @media all and (max-width: 800px) {
+                .foto_full.izquierda {
+                    display: none;
+                }
             }
         }
-    }
-}
 
-@media all and (max-width: 1500px) {
-    .principal .portada .columna .texto {
-        padding-left: 2.25rem;
-        padding-right: 2.25rem;
-    }
-}
-
-@media all and (max-width: 1199px) {
-    .principal .portada .columna .foto {
-        display: none;
-    }
-
-    .principal .portada .columna .texto {
-        width: 100%;
-    }
-}
-
-@media all and (max-width: 800px) {
-
-
-    .principal .portada .columna {
-        width: 100%;
-    }
-
-    .principal .portada .columna .foto_full.izquierda {
-        display: none;
-    }
-
-    .principal .portada .columna .texto h2 {
-        text-align: center;
-    }
-
-    .principal .portada .columna .texto p {
-        text-align: justify;
+        @media all and (max-width: 800px) {
+            .columna {
+                width: 100%;
+            }
+        }
     }
 }
 </style>

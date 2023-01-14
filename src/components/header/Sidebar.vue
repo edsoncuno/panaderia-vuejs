@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-import Icon from "./Icon.vue";
+import Icon from "../Icon.vue";
 
 const props = defineProps({
     do: Function

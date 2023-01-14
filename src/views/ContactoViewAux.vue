@@ -1,5 +1,5 @@
 <script setup>
-import Form from "../components/form/Form.vue";
+//import Form from "./Form.vue";
 
 const itemsCards = [
     { text: "correo@correo.com", title: "Escríbenos" },
@@ -7,10 +7,12 @@ const itemsCards = [
     { text: "Martes a Domingo 11am - 9pm", title: "Horario" }
 ]
 </script>
+
 <template>
     <div class="container">
         <div class="background">
             <div class="imagen"></div>
+            <div class="relleno"></div>
         </div>
         <div class="cards">
             <div class="card" v-for="item in itemsCards">
@@ -18,51 +20,54 @@ const itemsCards = [
                 <div class="text">{{ item.text }}</div>
             </div>
         </div>
-        <div class="containerform">
-            <Form />
-        </div>
+        <!--<div class="containerform"></div>-->
     </div>
 </template>
 <style scoped lang="scss">
 .container {
+    //border: 1px green solid; // se utilizo para ver el espacio que se crea al usar media query
     width: 100%;
-    height: 55rem;
     position: relative;
-
+    height: 50rem;
+    overflow: hidden;// usar media query se agrega espacio, con esto se controla.
     .background {
         width: 100%;
         height: 100%;
-        display: grid;
-        grid-template-rows: 3fr 2.5fr;
-        grid-template-columns: 1fr;
 
         .imagen {
-            background-image: url('https://i.postimg.cc/d0DwD80r/contacto.jpg');
+            background: url("https://i.postimg.cc/d0DwD80r/contacto.jpg");
             background-size: cover;
             background-position: center;
+            width: 100%;
+            height: 60%;
+        }
+
+        .relleno {
+            width: 100%;
+            height: 40%;
         }
     }
 
     .cards {
-        position: absolute;
-        top: 10%;
-        left: 0;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
+        flex-direction: row;
         width: 100%;
+        height: auto;
+        position: absolute;
+        top: 5rem;
+        bottom: 0;
+        justify-content: space-around;
 
         .card {
-            width: 15rem;
-            height: 10rem;
-            margin: 1rem;
             background-color: white;
+            width: 25%;
+            height: 25%;
+            border: 6px double gray;
             color: black;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border: 6px double gray;
 
             .title {
                 font-size: 1.5rem;
@@ -79,55 +84,26 @@ const itemsCards = [
         }
     }
 
-    @media all and (max-width:815px) {
+    @media all and (max-width: 830px) {
         .cards {
-            top: 1%;
-        }
-    }
-
-    .containerform {
-        position: absolute;
-        top: 40%;
-        left: 25%;
-        width: 50%;
-        height: 30rem;
-        background: greenyellow;
-    }
-
-    @media all and (max-width: 1250px) {
-        .containerform {
-            top: 40%;
+            flex-direction: column;
+            height: 50%;
+            top: 0;
+            //left: 15%;
             left: 15%;
-            width: 70%;
+            .card{
+                width: 70%;
+                height: 30%;
+            }
         }
     }
 
-    @media all and (max-width: 815px) {
-        .containerform {
-            top: 45%;
-            left: 10%;
-            width: 80%;
-        }
-    }
-
-    @media all and (max-width: 543px) {
-        .containerform {
-            top: 53%;
-            left: 10%;
-            width: 80%;
-        }
-    }
-}
-
-@media all and (max-width: 815px) {
-    .container {
-        height: 60rem;
-    }
-}
-
-@media all and (max-width: 543px) {
-    .container {
-        height: 70rem;
-    }
+    /*
+    .containerform {
+        width: 50%;
+        position: absolute;
+        top: 23rem;
+        background-color: red;
+    }*/
 }
 </style>
